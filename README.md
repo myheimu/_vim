@@ -1,4 +1,4 @@
 dotvim
 ======
 
-My Vim Configures
+Myheimu's Vim Configures.
