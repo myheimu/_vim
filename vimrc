@@ -72,8 +72,8 @@ Bundle 'altercation/vim-colors-solarized'
 "================== Plugin ====================
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-" 旧 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/powerline.git'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline'
 Bundle 'rosenfeld/conque-term'
 Bundle 'a.vim'
 Bundle 'matchit.zip'
@@ -222,12 +222,14 @@ let Tlist_Compact_Format = 1
 " u 打开上层目录                 m 显示文件系统菜单（添加、删除、移动操作）
 " r 递归刷新当前目录             R 递归刷新当前根目录
 "-----------------------------------------------------------------
-" F3 NERDTree 切换
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC>:NERDTreeToggle<CR>
-set autochdir
-set tags=tags,./tags,./../tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags,./../../../../../../tags,./../../../../../../../tags,./../../../../../../../../tags,./../../../../../../../../../tags,./../../../../../../../../../../tags,./../../../../../../../../../../../tags,/usr/include/tags
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+if exists("loaded_nerd_tree")
+  " F3 NERDTree 切换
+  map <F3> :NERDTreeToggle<CR>
+  imap <F3> <ESC>:NERDTreeToggle<CR>
+  set autochdir
+  set tags=tags,./tags,./../tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags,./../../../../../../tags,./../../../../../../../tags,./../../../../../../../../tags,./../../../../../../../../../tags,./../../../../../../../../../../tags,./../../../../../../../../../../../tags,/usr/include/tags
+  map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+endif
 "-----------------------------------------------------------------
 " plugin - Python-mode
 " https://github.com/klen/python-mode
@@ -239,10 +241,16 @@ let g:pymode_lint = 0
 " plugin - vim-powerline
 " https://github.com/Lokaltog/vim-powerline
 "-----------------------------------------------------------------
-set t_Co=256
-"fancy要求进行font patch，或者直接使用patch过的字体。
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'short'
+if exists('g:Powerline_loaded')
+  set t_Co=256
+  "fancy要求进行font patch，或者直接使用patch过的字体。
+  let g:Powerline_symbols = 'fancy'
+  let g:Powerline_stl_path_style = 'short'
+endif
+"-----------------------------------------------------------------
+" plugin - powerline
+"-----------------------------------------------------------------
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 "-----------------------------------------------------------------
 " plugin - neocomplcache.vim
 "-----------------------------------------------------------------
