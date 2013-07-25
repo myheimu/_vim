@@ -17,14 +17,16 @@ Bundle 'xml.vim'
 Bundle 'JSON.vim'
 Bundle 'python.vim--Vasiliev'
 Bundle 'hail2u/vim-css3-syntax'
-"已下载并修改 Bundle 'google.vim'
+"(Already Download) Bundle 'google.vim'
 "================== Indent ====================
 Bundle 'Indent-Guides'
 if 1
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+  let g:indent_guides_enable_on_vim_startup=1
+  let g:indent_guides_auto_colors=0
+  if &background == "black"
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+  endif
 endif
 Bundle 'Javascript-Indentation'
 Bundle 'mako.vim--Torborg'
@@ -43,21 +45,25 @@ let g:solarized_italic=0
 "================== Plugin ====================
 Bundle 'a.vim'
 if 1
-  let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../public,sfr:../internal'
-  let g:alternateNoDefaultAlternate = 1
+  let g:alternateSearchPath='sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../public,sfr:../internal'
+  let g:alternateNoDefaultAlternate=1
 endif
 Bundle 'scrooloose/nerdtree'
 if 1
   nmap <Leader>t :NERDTreeToggle<CR>
+  let NERDChristmasTree=0
+  let NERDTreeWinSize=30
+  let NERDTreeChDirMode=2
+  let NERDTreeShowBookmarks=1
 endif
 Bundle 'scrooloose/nerdcommenter'
-" 旧 Bundle 'Lokaltog/vim-powerline'
+"(Old) Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/powerline'
 if 1
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-"  set t_Co=256
-  let g:Powerline_symbols = 'fancy'
-  let g:Powerline_stl_path_style = 'full'
+  set t_Co=256
+  let g:Powerline_symbols='fancy'
+  let g:Powerline_stl_path_style='full'
 endif
 Bundle 'rosenfeld/conque-term'
 Bundle 'matchit.zip'
@@ -67,39 +73,45 @@ Bundle 'tpope/vim-surround'
 Bundle 'corntrace/bufexplorer'
 set autochdir
 set tags=/usr/include/tags,tags,./tags;
-nmap <Leader>c :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"nmap <Leader>c :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+:command CTAGS !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 "Bundle 'taglist.vim'
 if 0
   nnoremap <silent><F4> :TlistToggle<CR>
 endif
 Bundle 'majutsushi/tagbar'
+let g:tagbar_width=30
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
 Bundle 'vcscommand.vim'
 Bundle 'scrooloose/syntastic'
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_checkers = ['cpplint']
-let g:syntastic_cpp_cpplint_args = '--verbose=0'
+let g:syntastic_check_on_open=1
+let g:syntastic_cpp_checkers=['cpplint']
+let g:syntastic_cpp_cpplint_args='--verbose=0'
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode = 'raw'
+let g:ctrlp_working_path_mode='raw'
 Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key = '<Leader>'
 " Bundle 'wincent/Command-T'
 Bundle 'Raimondi/delimitMate'
 Bundle 'terryma/vim-multiple-cursors'
-"需要Vim7.3+ Bundle 'myusuf3/numbers.vim'
-" 辅助neocomplcache
+"Need Vim7.3+ Bundle 'myusuf3/numbers.vim'
+" For neocomplcache
 Bundle 'Shougo/vimproc.vim'
 " Complete
 " Bundle 'vim-scripts/AutoComplPop'
 Bundle 'Shougo/neocomplcache.vim'
 if 1
   " Disable AutoComplPop.
-  let g:acp_enableAtStartup = 0
-  let g:neocomplcache_enable_at_startup = 1
-  let g:neocomplcache_enable_smart_case = 1
+  let g:acp_enableAtStartup=0
+  let g:neocomplcache_enable_at_startup=1
+  let g:neocomplcache_enable_smart_case=1
   "let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
   "let g:neocomplcache_enable_camel_case_completion = 1
   "let g:neocomplcache_enable_underbar_completion = 1
-  let g:neocomplcache_dictionary_filetype_lists = {
+  let g:neocomplcache_dictionary_filetype_lists={
         \ 'default' : '',
         \ 'vimshell' : $HOME.'/.vimshell_hist',
         \ 'scheme' : $HOME.'/.gosh_completions'
@@ -152,7 +164,7 @@ if 1
   "let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 endif
 Bundle 'OmniCppComplete'
-let OmniCpp_SelectFirstItem = 0
+let OmniCpp_SelectFirstItem=0
 Bundle 'Shougo/neosnippet.vim'
 if exists('g:loaded_neosnippet')
   " Plugin key-mappings.
@@ -170,7 +182,7 @@ if exists('g:loaded_neosnippet')
   if has('conceal')
     set conceallevel=2 concealcursor=i
   endif
-  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_snipmate_compatibility=1
   let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 endif
 Bundle 'honza/vim-snippets'
@@ -181,70 +193,82 @@ Bundle 'spf13/snipmate-snippets'
 "Bundle 'ervandew/supertab'
 "Bundle 'mattn/zencoding-vim'
 " Languages
-Bundle 'vim-scripts/c.vim'
+Bundle 'c.vim'
+Bundle 'jdevera/vim-stl-syntax'
+" C++11 Syntax
+Bundle 'vim-jp/cpp-vim'
 "Bundle 'vim-scripts/pylint.vim'
 Bundle 'klen/python-mode'
-let g:pymode_folding = 0
-let g:pymode_rope = 0
-let g:pymode_lint = 0
+let g:pymode_folding=0
+let g:pymode_rope=0
+let g:pymode_lint=0
 "Bundle 'mbbill/code_complete'
 "Bundle 'mbbill/echofunc'
 Bundle 'kshenoy/vim-signature'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bronson/vim-trailing-whitespace'
 "------------------------------------------------------------------------------
-set term=screen-256color
-"键盘vim模式
+"================== file ====================
+set fileformat=unix
+set fileformats=unix,dos
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+filetype plugin indent on
+syntax on
+au BufRead,BufNewFile *.thrift setfiletype thrift
+au BufRead,BufNewFile *.json setfiletype json
+au BufRead,BufNewFile YBUILD set filetype=python
+let c_space_errors=1
+"================== color ====================
+"hi clear Normal 清除背景
+set background=dark
+"color mydesert
+color solarized
+"================== cursor & line & other +===
+set cursorline "cursorcolumn
+set ruler      "show cursor position numbers
+set number     "line number"
+set list
+set textwidth=79
+"need vim7.3+ set colorcolumn=80
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.py let w:m1=matchadd('Error', '\%>80v.\+', -1)
+"================== search ===================
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set gdefault
+"================== edit =====================
 set nocompatible
-"语法高亮
-set syntax=on
-"？
+set history=1000
 set confirm
-"自动缩进
+set backspace=indent,eol,start
+set report=0
+set nowrap
+set showmatch
+set showcmd
+set title
+"set relativenumber
+set nobackup
+set noswapfile
+"================== indent ===================
 set autoindent
+set smartindent
 set cindent
-"显示行号
-set number
-"突出当前行
-set nocursorline
-"tab键宽度
 set tabstop=4
-"统一缩进
 "set shiftwidth=4
 "set softtabstop=4
 set shiftwidth=2
 set softtabstop=2
-"用空格代替tab
 set expandtab
-"历史记录数
-set history=1000
-"禁止生成临时文件
-set nobackup
-set noswapfile
-"搜索忽略大小写
-set ignorecase
-"搜索逐字符高亮
-set hlsearch
-set incsearch
-"行内替换
-set gdefault
-"编码设置
-set fileformat=unix
-set fileformats=unix,dos
-set enc=utf-8
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-"行宽80
-set textwidth=79
-"显示非可见符号
-set list
-"清除背景
-"hi clear Normal
-"hi clear
-"设置
-set background=dark
-"color mydesert
-color solarized
-"状态栏
+"================== fold =====================
+set nofoldenable  " disable folding"
+"set foldenable              " 开始折叠
+"set foldmethod=syntax       " 设置语法折叠
+"set foldcolumn=0            " 设置折叠区域的宽度
+"setlocal foldlevel=1        " 设置折叠层数为1
+"set foldclose=all           " 设置为自动关闭折叠
+"================== statusline ===============
 set laststatus=2
 "set statusline+=%f
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
@@ -258,27 +282,15 @@ set laststatus=2
 "highlight User7 ctermfg=Black ctermbg=LightGray
 "set statusline=%1*%F%2*%m%r%h%w\ %3*[%{&ff}]\ %4*[%Y]\ %5*[A-%03.3b(0x%02.2B)]\ %6*[%l,%c%V]%7*[%p%%/%L]
 "set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [A-%03.3b(0x%02.2B)]\ [%l,%c%V]\ [%p%%]
-
-"右下角显示光标位置
-set ruler
-"侦测文件类型，载入插件/缩进
-filetype plugin indent on
-syntax on
-"类型
-au BufRead,BufNewFile *.thrift setfiletype thrift
-au BufRead,BufNewFile *.json setfiletype json
-au BufRead,BufNewFile YBUILD set filetype=python
-"界限
-"需要Vim7.3+ set colorcolumn=80
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.py let w:m1=matchadd('Error', '\%>80v.\+', -1)
-"高亮匹配括号
-set showmatch
-"折叠
-"set foldenable              " 开始折叠
-"set foldmethod=syntax       " 设置语法折叠
-"set foldcolumn=0            " 设置折叠区域的宽度
-"setlocal foldlevel=1        " 设置折叠层数为1
-set foldclose=all           " 设置为自动关闭折叠
+"================== command =================
+nnoremap ; :
+:command W w
+:command WQ wq
+:command Wq wq
+:command Q q
+:command Qa qa
+:command QA qa
+"================== other ===================
 " Python部分，来自Python源代码
 let python_highlight_all=1
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
