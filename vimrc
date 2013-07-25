@@ -23,7 +23,7 @@ Bundle 'Indent-Guides'
 if 1
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=none
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 endif
 Bundle 'Javascript-Indentation'
@@ -34,9 +34,12 @@ Bundle 'IndentAnything'
 Bundle 'Colour-Sampler-Pack'
 Bundle 'altercation/vim-colors-solarized'
 let g:solarized_termtrans=1
+"let g:solarize_termcolors=256
 "let g:solarized_degrade=1
+let g:solarized_italic=0
 "let g:solarized_contrast='high'
-"let g:solarized_visibility='low'
+"let g:solarized_visibility='high'
+"let g:solarized_hitrail=1
 "================== Plugin ====================
 Bundle 'a.vim'
 if 1
@@ -52,7 +55,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/powerline'
 if 1
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-  set t_Co=256
+"  set t_Co=256
   let g:Powerline_symbols = 'fancy'
   let g:Powerline_stl_path_style = 'full'
 endif
@@ -72,6 +75,9 @@ endif
 Bundle 'majutsushi/tagbar'
 Bundle 'vcscommand.vim'
 Bundle 'scrooloose/syntastic'
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_cpp_cpplint_args = '--verbose=0'
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'raw'
 Bundle 'tpope/vim-markdown'
@@ -85,7 +91,7 @@ Bundle 'Shougo/vimproc.vim'
 " Complete
 " Bundle 'vim-scripts/AutoComplPop'
 Bundle 'Shougo/neocomplcache.vim'
-if 0
+if 1
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
   let g:neocomplcache_enable_at_startup = 1
@@ -172,6 +178,8 @@ Bundle 'spf13/snipmate-snippets'
 " 占用tab Bundle 'msanders/snipmate.vim'
 " 编译成问题 Bundle 'Valloric/YouCompleteMe'
 "Bundle 'Rip-Rip/clang_complete'
+"Bundle 'ervandew/supertab'
+"Bundle 'mattn/zencoding-vim'
 " Languages
 Bundle 'vim-scripts/c.vim'
 "Bundle 'vim-scripts/pylint.vim'
@@ -182,8 +190,10 @@ let g:pymode_lint = 0
 "Bundle 'mbbill/code_complete'
 "Bundle 'mbbill/echofunc'
 Bundle 'kshenoy/vim-signature'
-"Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
+Bundle 'bronson/vim-trailing-whitespace'
 "------------------------------------------------------------------------------
+set term=screen-256color
 "键盘vim模式
 set nocompatible
 "语法高亮
@@ -225,6 +235,8 @@ set enc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 "行宽80
 set textwidth=79
+"显示非可见符号
+set list
 "清除背景
 "hi clear Normal
 "hi clear
