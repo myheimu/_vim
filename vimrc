@@ -23,10 +23,9 @@ Bundle 'hail2u/vim-css3-syntax'
 if 1
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_auto_colors=0
-  if &background == "black"
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-  endif
+  "if &background == "black"
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 endif
 Bundle 'adonis0147/prettyGuides'
 Bundle 'Javascript-Indentation'
@@ -36,13 +35,15 @@ Bundle 'IndentAnything'
 "================== Color  ====================
 Bundle 'Colour-Sampler-Pack'
 Bundle 'altercation/vim-colors-solarized'
+if 1
 let g:solarized_termtrans=1
 "let g:solarize_termcolors=256
 "let g:solarized_degrade=1
 let g:solarized_italic=0
-"let g:solarized_contrast='high'
-"let g:solarized_visibility='high'
+let g:solarized_contrast='high'
+let g:solarized_visibility='high'
 "let g:solarized_hitrail=1
+endif
 "================== Plugin ====================
 Bundle 'a.vim'
 if 1
@@ -74,6 +75,7 @@ Bundle 'matchit.zip'
 Bundle 'calendar.vim'
 "Bundle 'mru.vim'
 Bundle 'tpope/vim-surround'
+Bundle 'project.tar.gz'
 Bundle 'corntrace/bufexplorer'
 set autochdir
 set tags=/usr/include/tags,tags,./tags;
@@ -88,7 +90,7 @@ let g:tagbar_width=30
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
-Bundle 'vcscommand.vim'
+"Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_cpp_checkers=['cpplint']
@@ -96,6 +98,7 @@ let g:syntastic_cpp_cpplint_args='--verbose=0'
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode='raw'
 Bundle 'tpope/vim-markdown'
+Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>'
 " Bundle 'wincent/Command-T'
@@ -201,6 +204,7 @@ Bundle 'c.vim'
 Bundle 'jdevera/vim-stl-syntax'
 " C++11 Syntax
 Bundle 'vim-jp/cpp-vim'
+"Bundle 'spf13/PIV'
 "Bundle 'vim-scripts/pylint.vim'
 Bundle 'klen/python-mode'
 let g:pymode_folding=0
@@ -211,6 +215,10 @@ let g:pymode_lint=0
 Bundle 'kshenoy/vim-signature'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'kana/vim-fakeclip'
+Bundle 'utl.vim'
+"速度太慢Bundle 'shemerey/vim-indexer'
+"let g:indexer_indexerListFilename=$HOME.'/.vim/.indexer_files'
 "------------------------------------------------------------------------------
 "================== file ====================
 set fileformat=unix
@@ -232,7 +240,7 @@ color solarized
 set cursorline "cursorcolumn
 set ruler      "show cursor position numbers
 set number     "line number"
-set list
+"set list      "show invisibility char. (but no expand tab char)
 set textwidth=79
 "need vim7.3+ set colorcolumn=80
 au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.py let w:m1=matchadd('Error', '\%>80v.\+', -1)
@@ -248,13 +256,14 @@ set history=1000
 set confirm
 set backspace=indent,eol,start
 set report=0
-set nowrap
+set wrap
 set showmatch
 set showcmd
 set title
 "set relativenumber
 set nobackup
 set noswapfile
+set scrolloff=5
 "================== indent ===================
 set autoindent
 set smartindent
@@ -298,7 +307,7 @@ nnoremap ; :
 " Python部分，来自Python源代码
 let python_highlight_all=1
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
+au BufRead,BufNewFile *.py,*.pyw set tabstop=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 " Use the below highlight group when displaying bad whitespace is desired
 highlight BadWhitespace ctermbg=red guibg=red
