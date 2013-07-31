@@ -19,7 +19,7 @@ Bundle 'python.vim--Vasiliev'
 Bundle 'hail2u/vim-css3-syntax'
 "(Already Download) Bundle 'google.vim'
 "================== Indent ====================
-Bundle 'Indent-Guides'
+"Bundle 'Indent-Guides'
 if 1
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_auto_colors=0
@@ -28,6 +28,7 @@ if 1
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
   endif
 endif
+Bundle 'adonis0147/prettyGuides'
 Bundle 'Javascript-Indentation'
 Bundle 'mako.vim--Torborg'
 Bundle 'gg/python.vim'
@@ -48,6 +49,8 @@ if 1
   let g:alternateSearchPath='sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../public,sfr:../internal'
   let g:alternateNoDefaultAlternate=1
 endif
+"Bundle 'sudo.vim'
+Bundle 'SudoEdit.vim'
 Bundle 'scrooloose/nerdtree'
 if 1
   nmap <Leader>t :NERDTreeToggle<CR>
@@ -56,6 +59,7 @@ if 1
   let NERDTreeChDirMode=2
   let NERDTreeShowBookmarks=1
 endif
+Bundle 'zhaocai/GoldenView.Vim'
 Bundle 'scrooloose/nerdcommenter'
 "(Old) Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/powerline'
