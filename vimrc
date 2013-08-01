@@ -9,17 +9,17 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 "================== Syntax ====================
-Bundle 'dagwieers/asciidoc-vim'
+"Bundle 'dagwieers/asciidoc-vim'
 "Bundle 'confluencewiki.vim'
 Bundle 'html5.vim'
-Bundle 'JavaScript-syntax'
+"Bundle 'JavaScript-syntax'
 Bundle 'xml.vim'
 Bundle 'JSON.vim'
 Bundle 'python.vim--Vasiliev'
-Bundle 'hail2u/vim-css3-syntax'
+"Bundle 'hail2u/vim-css3-syntax'
 "(Already Download) Bundle 'google.vim'
 "================== Indent ====================
-"Bundle 'Indent-Guides'
+Bundle 'Indent-Guides'
 if 1
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_auto_colors=0
@@ -27,22 +27,20 @@ if 1
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 endif
-Bundle 'adonis0147/prettyGuides'
-Bundle 'Javascript-Indentation'
-Bundle 'mako.vim--Torborg'
+"Bundle 'adonis0147/prettyGuides'
+"Bundle 'Javascript-Indentation'
+"Bundle 'mako.vim--Torborg'
 Bundle 'gg/python.vim'
-Bundle 'IndentAnything'
+"Bundle 'IndentAnything'
 "================== Color  ====================
-Bundle 'Colour-Sampler-Pack'
+"Bundle 'Colour-Sampler-Pack'
 Bundle 'altercation/vim-colors-solarized'
 if 1
-let g:solarized_termtrans=1
-"let g:solarize_termcolors=256
-"let g:solarized_degrade=1
-let g:solarized_italic=0
-let g:solarized_contrast='high'
-let g:solarized_visibility='high'
-"let g:solarized_hitrail=1
+  let g:solarized_termtrans=1
+  let g:solarized_termcolors=256
+  "let g:solarized_italic=0
+  let g:solarized_contrast='high'
+  "let g:solarized_visibility='high'
 endif
 "================== Plugin ====================
 Bundle 'a.vim'
@@ -50,8 +48,9 @@ if 1
   let g:alternateSearchPath='sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../public,sfr:../internal'
   let g:alternateNoDefaultAlternate=1
 endif
+Bundle 'tpope/vim-repeat'
 "Bundle 'sudo.vim'
-Bundle 'SudoEdit.vim'
+"Bundle 'SudoEdit.vim'
 Bundle 'scrooloose/nerdtree'
 if 1
   nmap <Leader>t :NERDTreeToggle<CR>
@@ -72,11 +71,11 @@ if 1
 endif
 Bundle 'rosenfeld/conque-term'
 Bundle 'matchit.zip'
-Bundle 'calendar.vim'
+"Bundle 'calendar.vim'
 "Bundle 'mru.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'project.tar.gz'
-Bundle 'corntrace/bufexplorer'
+"Bundle 'project.tar.gz'
+"Bundle 'corntrace/bufexplorer'
 set autochdir
 set tags=/usr/include/tags,tags,./tags;
 "nmap <Leader>c :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -96,14 +95,14 @@ let g:syntastic_check_on_open=1
 let g:syntastic_cpp_checkers=['cpplint']
 let g:syntastic_cpp_cpplint_args='--verbose=0'
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode='raw'
+let g:ctrlp_working_path_mode='c'
 Bundle 'tpope/vim-markdown'
 Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>'
 " Bundle 'wincent/Command-T'
 Bundle 'Raimondi/delimitMate'
-Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-multiple-cursors'
 "Need Vim7.3+ Bundle 'myusuf3/numbers.vim'
 " For neocomplcache
 Bundle 'Shougo/vimproc.vim'
@@ -173,7 +172,7 @@ endif
 Bundle 'OmniCppComplete'
 let OmniCpp_SelectFirstItem=0
 Bundle 'Shougo/neosnippet.vim'
-if exists('g:loaded_neosnippet')
+if 1
   " Plugin key-mappings.
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -200,7 +199,7 @@ Bundle 'spf13/snipmate-snippets'
 "Bundle 'ervandew/supertab'
 "Bundle 'mattn/zencoding-vim'
 " Languages
-Bundle 'c.vim'
+"庞大 Bundle 'c.vim'
 Bundle 'jdevera/vim-stl-syntax'
 " C++11 Syntax
 Bundle 'vim-jp/cpp-vim'
@@ -215,14 +214,16 @@ let g:pymode_lint=0
 Bundle 'kshenoy/vim-signature'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'kana/vim-fakeclip'
+"Bundle 'kana/vim-fakeclip'
 Bundle 'utl.vim'
 "速度太慢Bundle 'shemerey/vim-indexer'
 "let g:indexer_indexerListFilename=$HOME.'/.vim/.indexer_files'
 "------------------------------------------------------------------------------
+scriptencoding utf-8
+set shortmess+=filmnrxoOtT
 "================== file ====================
 set fileformat=unix
-set fileformats=unix,dos
+set fileformats=unix,dos,mac
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 filetype plugin indent on
@@ -240,7 +241,9 @@ color solarized
 set cursorline "cursorcolumn
 set ruler      "show cursor position numbers
 set number     "line number"
-"set list      "show invisibility char. (but no expand tab char)
+set list       "show invisibility char. (but no expand tab char)
+set listchars=eol:⏎,tab:»·,trail:~,extends:»,precedes:«,nbsp:.
+"set listchars=eol:↵,tab:»·,trail:·,extends:#,precedes:<,nbsp:.
 set textwidth=79
 "need vim7.3+ set colorcolumn=80
 au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.py let w:m1=matchadd('Error', '\%>80v.\+', -1)
@@ -252,7 +255,9 @@ set incsearch
 set gdefault
 "================== edit =====================
 set nocompatible
+"set hidden   " don't unload buffer when it is abandoned
 set history=1000
+set undolevels=1000
 set confirm
 set backspace=indent,eol,start
 set report=0
@@ -264,9 +269,11 @@ set title
 set nobackup
 set noswapfile
 set scrolloff=5
+set virtualedit=onemore
 "================== indent ===================
 set autoindent
 set smartindent
+set copyindent
 set cindent
 set tabstop=4
 "set shiftwidth=4
@@ -275,7 +282,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 "================== fold =====================
-set nofoldenable  " disable folding"
+set nofoldenable  " disable folding
 "set foldenable              " 开始折叠
 "set foldmethod=syntax       " 设置语法折叠
 "set foldcolumn=0            " 设置折叠区域的宽度
@@ -303,6 +310,18 @@ nnoremap ; :
 :command Q q
 :command Qa qa
 :command QA qa
+" Force myself to use hjkl
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+" sudo write
+cmap w!! w !sudo tee % >/dev/null
+" use jj to NORMAL
+inoremap jj <Esc>
+cnoremap jj <c-c>
+"================== GUI =====================
+"set mouse=a
 "================== other ===================
 " Python部分，来自Python源代码
 let python_highlight_all=1
