@@ -149,10 +149,8 @@ if 1
   inoremap <expr><C-e>  neocomplcache#cancel_popup()
   " Close popup by <Space>.
   inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<Space>"
-
   " AutoComplPop like behavior.
   "let g:neocomplcache_enable_auto_select = 1
-
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
